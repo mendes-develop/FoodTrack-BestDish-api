@@ -14,7 +14,7 @@ class AuthController < ApplicationController
             # token = JWT.encode(payload, 'SecretKey', 'HS256')
             render json: {token: create_token(user.id)} 
         else
-            render json: {errors: ["Password or User don't match. Please, try it again."]}, status: 422
+            render json: {errors: ["Username or password don't match. Please, try it again."]}, status: 422
         end
        
     end
