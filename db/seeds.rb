@@ -5,3 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
+require 'byebug'
+require 'json'
+
+Restaurant.destroy_all
+Dish.destroy_all
+
+Restaurant.reset_pk_sequence
+Dish.reset_pk_sequence
+
+puts "initiating"
+
+
+def scraper
+    url = 'http://localhost:3000/restaurants'
+
+    response = RestClient.get(url)
+    json = JSON.parse(response)
+
+    if !json.nil?
+        json.each do |restaurant|
+
+            media_image = restaurant["media_image"]["base_url"] + restaurant["media_image"]["public_id"] + "." + restaurant["media_image"]["format"]
+            logo = restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["base_url"] + restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["public_id"] + "." + restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["format"]
+            restaurant_instance = Restaurant.create(name: restaurant["name"], image: restaurant["logo"], city: restaurant["address"]["address_locality"], state: restaurant["address"]["address_region"], postal_code: restaurant["address"]["postal_code"], street_address: restaurant["address"]["street_address"], latitude: restaurant["address"]["latitude"], longitude:restaurant["address"]["longitude"], price_rating: restaurant["price_rating"], media_image: media_image, logo: logo)
+
+            restaurant["menu_items"].each do |dish|
+               dish = Dish.create(name: dish["name"], description: dish["description"], price: dish["minimum_price_variation"], restaurant_id: restaurant_instance.id)
+                puts(dish)
+            end
+
+        end
+       else
+         puts "error fetching restaurants"
+       end
+
+end
+
+scraper
+
+puts "seeded it"

@@ -20,6 +20,12 @@ gem 'dotenv-rails'
 
 gem 'jwt'
 
+gem 'rest-client'
+
+gem 'json'
+
+gem 'activerecord-reset-pk-sequence'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

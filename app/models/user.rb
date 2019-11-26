@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+
+    has_many :favorites
+    has_many :votes
+    has_many :commments
+
+    has_many :restaurants, through: :favorites
+
     has_secure_password
 
     validates :username, :email, presence: true, uniqueness: true
