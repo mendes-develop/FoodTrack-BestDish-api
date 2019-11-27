@@ -2,9 +2,7 @@ class FavoritesController < ApplicationController
 
     def create 
 
-        byebug
-
-        if current_user
+        if current_user != nil
             restaurant = Restaurant.find_by(id: params[:restaurant_id])
             if !current_user.restaurants.include?(restaurant)
                 Favorite.create(user: current_user, restaurant_id: params[:restaurant_id])
@@ -18,6 +16,14 @@ class FavoritesController < ApplicationController
         end
 
     end
+
+    def show
+        
+        @favorites = Favorite.where(user: current_user)
+        render json: @favorites
+
+    end
+
 
 
     # private
