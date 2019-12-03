@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
         #code above got substitute by helper methods
 
-        user = current_user()
+        user = current_user_login
         if user 
             render json: {current_user: user}
         else

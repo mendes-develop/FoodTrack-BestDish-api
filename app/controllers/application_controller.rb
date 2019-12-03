@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
 
-    def token()
+    def token
         request.headers['Authorization'].split(' ')[1]
     end
 
@@ -8,17 +8,27 @@ class ApplicationController < ActionController::API
         jwt_secret = ENV['JWT_SECRET']
     end
 
-    def decoded_token()
+    def decoded_token
+        # byebug
         JWT.decode(token, secretKey, true, {algorithm: 'HS256'})
     end
 
-    def current_user()
-        User.find(decoded_token()[0]['user_id'])
+    def current_user_login
+        # byebug
+        if request.headers['Authorization'].split(' ')[1] == "undefined"
+            return nil
+        else
+            User.find(decoded_token()[0]['user_id'])
+        end
     end
 
     def create_token(user_id)
+
+        
         payload = {user_id: user_id}
         JWT.encode(payload, secretKey, 'HS256')
+        
+        
     end
 
 

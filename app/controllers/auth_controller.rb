@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-
+    # skip_before_action :token, only: [:login]
     def login
         # 1- Find user based on username and/or email
         # 2- check if user exist and password matches
@@ -7,7 +7,7 @@ class AuthController < ApplicationController
 
         # 3.a create payload, encode it with JWT.econde + SecretKey + HMAC Alghorithm
         # 3.b render token to the user render {token: token}
-
+        # byebug
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             # payload = {user_id: user.id}

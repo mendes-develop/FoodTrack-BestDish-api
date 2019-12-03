@@ -13,18 +13,21 @@ gem 'puma', '~> 4.1'
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+# Hide secrect key for JWT
 gem 'dotenv-rails'
-
+#JSON Web Token
 gem 'jwt'
-
+#HTTP calls
 gem 'rest-client'
-
+# Parses response into json
 gem 'json'
-
+# resets primary key
 gem 'activerecord-reset-pk-sequence'
+# Serializers
+gem 'active_model_serializers'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
