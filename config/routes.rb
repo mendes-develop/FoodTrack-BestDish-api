@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # resources :favorites
-  resources :comments
   resources :votes
   resources :dishes
   # resources :restaurants
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   get '/favorites', to: 'favorites#show'
   get '/restaurants', to: 'restaurants#index'
+  post '/votes', to: 'votes#create'
   
 
 end
