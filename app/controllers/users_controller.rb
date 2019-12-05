@@ -24,12 +24,13 @@ class UsersController < ApplicationController
     def create 
         user = User.create(user_params)
         if user.valid?
-            render json: {token: create_token(user.id)}
+            render json: {token: create_token(user.id), current_user: user}
         else
            render json: {errors: user.errors.full_messages}, status: 422
         end
         
     end
+
 
     private 
 
