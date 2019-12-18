@@ -9,12 +9,12 @@ class ApplicationController < ActionController::API
     end
 
     def decoded_token
-        # byebug
+        
         JWT.decode(token, secretKey, true, {algorithm: 'HS256'})
     end
 
     def current_user_login
-        # byebug
+        
         if request.headers['Authorization'].split(' ')[1] == "undefined"
             return nil
         else
