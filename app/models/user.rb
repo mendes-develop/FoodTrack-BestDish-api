@@ -1,8 +1,8 @@
 class User < ApplicationRecord
 
-    has_many :favorites
-    has_many :votes
-    has_many :commments
+    has_many :favorites, dependent: :destroy
+    has_many :votes, dependent: :destroy
+    # has_many :commments, dependent: :destroy
 
     has_many :restaurants, through: :favorites
 

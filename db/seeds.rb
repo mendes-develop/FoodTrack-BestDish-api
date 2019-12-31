@@ -10,22 +10,35 @@ require 'byebug'
 require 'json'
 
 Restaurant.destroy_all
+Favorite.destroy_all
+User.destroy_all
+Vote.destroy_all
 Dish.destroy_all
 
 Restaurant.reset_pk_sequence
+Favorite.reset_pk_sequence
 Dish.reset_pk_sequence
+Vote.reset_pk_sequence
+User.reset_pk_sequence
 
 puts "initiating"
 
 
 def scraper
-    url = 'http://localhost:3000/restaurants'
+    # url = 'http://localhost:3000/restaurants'
 
-    response = RestClient.get(url)
-    json = JSON.parse(response)
+    # response = RestClient.get(url)
+
+   
+
+    json_from_file = File.read("#{Rails.root}/db/db.json")
+    byebug
+    json = JSON.parse(json_from_file)
+
+    byebug
 
     if !json.nil?
-        json.each do |restaurant|
+        json["restaurants"].each do |restaurant|
 
             media_image = restaurant["media_image"]["base_url"] + restaurant["media_image"]["public_id"] + "." + restaurant["media_image"]["format"]
             logo = restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["base_url"] + restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["public_id"] + "." + restaurant["additional_media_images"]["LOGO_HOME_PAGE"]["format"]
