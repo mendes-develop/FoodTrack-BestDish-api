@@ -32,10 +32,7 @@ def scraper
    
 
     json_from_file = File.read("#{Rails.root}/db/db.json")
-    byebug
     json = JSON.parse(json_from_file)
-
-    byebug
 
     if !json.nil?
         json["restaurants"].each do |restaurant|
