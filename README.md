@@ -1,24 +1,31 @@
-# README
+# Best Dishes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# How dos it work
+Best Dishes is a web application that allows users to give ratings and comments to specific dishes from restaurants in the New York City area. Users are able to save a list of favorite restaurants on their profile, rate and comment dishes from restaurants that they’ve been to.
 
-Things you may want to cover:
+## Front-End
+Best Dishes is built using React as its front-end framework.
+React hooks as well as Redux are utilized in order to manage stateful logic and to create a cohesive UX.
 
-* Ruby version
+Google Maps API is being used for map rendering and for styles purposes we have React-Boostrap and Styled Components API.
 
-* System dependencies
+## Back-End
+Link to Back-End Repo // https://github.com/mendes-develop/FoodTrack-BestDish-api //
 
-* Configuration
+Best Dishes API is built with Ruby on Rails, utilizing JWT and BCrypt for security, PostgreSQL for its database and active model serializer.
 
-* Database creation
+The data is extracted from Grub-Hubs website and it counts with +200 restaurants in NY and NJ.
 
-* Database initialization
+## Installation
+Clone the repo and inside the root directory on your terminal type
+```
+yarn install
+yarn start
+```
 
-* How to run the test suite
+### Clone this repository
+```
+git clone https://github.com/mendes-develop/FoodTrack-BestDish-frontend.git
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
-
-* ...
