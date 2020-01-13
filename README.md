@@ -1,5 +1,7 @@
 # Best Dishes
 
+
+
 # How dos it work
 Best Dishes is a web application that allows users to give ratings and comments to specific dishes from restaurants in the New York City area. Users are able to save a list of favorite restaurants on their profile, rate and comment dishes from restaurants that they’ve been to.
 
@@ -10,7 +12,7 @@ React hooks as well as Redux are utilized in order to manage stateful logic and 
 Google Maps API is being used for map rendering and for styles purposes we have React-Boostrap and Styled Components API.
 
 ## Back-End
-Link to Back-End Repo // https://github.com/mendes-develop/FoodTrack-BestDish-api //
+[Link to Back-End Repo](https://github.com/mendes-develop/FoodTrack-BestDish-api)
 
 Best Dishes API is built with Ruby on Rails, utilizing JWT and BCrypt for security, PostgreSQL for its database and active model serializer.
 
