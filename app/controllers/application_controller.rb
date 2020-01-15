@@ -6,7 +6,6 @@ class ApplicationController < ActionController::API
 
     def secretKey 
         jwt_secret = 'SecretKey' #process.env['JWT_SECRET']
-        puts jwt_secret
     end
 
     def decoded_token
